@@ -2,7 +2,8 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { addProduct, updateProduct } from "../features/products/productSlice";
 import { useDispatch } from "react-redux";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import { categories } from "../data/categories"; 
+
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -25,8 +26,6 @@ const Product = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
-
-  const categories = ["T-Shirt", "Shirt", "Jeans"];
 
   useEffect(() => {
     if (id) {

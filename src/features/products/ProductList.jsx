@@ -10,6 +10,7 @@ import {
   setStatus,
 } from "./productSlice";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import { categories } from "../../data/categories";
 import "./ProductList.css";
 
 const ProductList = () => {
@@ -159,15 +160,18 @@ const ProductList = () => {
           value={search}
           onChange={(e) => dispatch(setSearch(e.target.value))}
         />
-        <select
-          value={category}
-          onChange={(e) => dispatch(setCategory(e.target.value))}
-        >
-          <option value="">All Categories</option>
-          <option value="T-Shirt">T-Shirt</option>
-          <option value="Shirt">Shirt</option>
-          <option value="Jeans">Jeans</option>
-        </select>
+       <select
+  value={category}
+  onChange={(e) => dispatch(setCategory(e.target.value))}
+>
+  <option value="">All Categories</option>
+  {categories.map((cat) => (
+    <option key={cat} value={cat}>
+      {cat}
+    </option>
+  ))}
+</select>
+
         <button onClick={handleBulkDelete} disabled={status === "loading"}>
           {status === "loading" ? "Deleting..." : "Bulk Delete"}
         </button>

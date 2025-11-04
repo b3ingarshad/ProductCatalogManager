@@ -48,7 +48,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <div className="container mt-4">
+      <div className="container">
         <Outlet />
       </div>
     </>
